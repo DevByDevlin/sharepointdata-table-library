@@ -1,0 +1,266 @@
+{
+    "d": {
+        "results": [
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(1)"
+                },
+                "Id": 1,
+                "Title": "Project Proposal",
+                "Author": {
+                    "Title": "Alice Johnson"
+                },
+                "Modified": "2025-08-01T09:12:00Z",
+                "Created": "2025-07-10T08:20:00Z",
+                "Status": "In Progress"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(2)"
+                },
+                "Id": 2,
+                "Title": "Budget Report",
+                "Author": {
+                    "Title": "Bob Smith"
+                },
+                "Modified": "2025-08-02T14:45:00Z",
+                "Created": "2025-07-12T11:05:00Z",
+                "Status": "Approved"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(3)"
+                },
+                "Id": 3,
+                "Title": "Meeting Notes",
+                "Author": {
+                    "Title": "Charlie Brown"
+                },
+                "Modified": "2025-08-03T10:22:00Z",
+                "Created": "2025-07-14T09:15:00Z",
+                "Status": "Draft"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(4)"
+                },
+                "Id": 4,
+                "Title": "Risk Assessment",
+                "Author": {
+                    "Title": "Dana White"
+                },
+                "Modified": "2025-08-04T16:00:00Z",
+                "Created": "2025-07-15T13:30:00Z",
+                "Status": "Pending Review"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(5)"
+                },
+                "Id": 5,
+                "Title": "Marketing Plan",
+                "Author": {
+                    "Title": "Ethan Hunt"
+                },
+                "Modified": "2025-08-05T08:45:00Z",
+                "Created": "2025-07-17T15:40:00Z",
+                "Status": "Approved"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(6)"
+                },
+                "Id": 6,
+                "Title": "Client Feedback",
+                "Author": {
+                    "Title": "Fiona Gallagher"
+                },
+                "Modified": "2025-08-06T12:10:00Z",
+                "Created": "2025-07-19T10:00:00Z",
+                "Status": "Closed"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(7)"
+                },
+                "Id": 7,
+                "Title": "Contract Draft",
+                "Author": {
+                    "Title": "George Michaels"
+                },
+                "Modified": "2025-08-07T09:55:00Z",
+                "Created": "2025-07-20T08:50:00Z",
+                "Status": "In Progress"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(8)"
+                },
+                "Id": 8,
+                "Title": "Product Roadmap",
+                "Author": {
+                    "Title": "Hannah Lee"
+                },
+                "Modified": "2025-08-08T14:25:00Z",
+                "Created": "2025-07-21T11:20:00Z",
+                "Status": "Approved"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(9)"
+                },
+                "Id": 9,
+                "Title": "Sales Data",
+                "Author": {
+                    "Title": "Ian Curtis"
+                },
+                "Modified": "2025-08-09T17:05:00Z",
+                "Created": "2025-07-22T13:10:00Z",
+                "Status": "Pending Review"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(10)"
+                },
+                "Id": 10,
+                "Title": "HR Policy Update",
+                "Author": {
+                    "Title": "Jenna Ortega"
+                },
+                "Modified": "2025-08-10T15:15:00Z",
+                "Created": "2025-07-23T09:00:00Z",
+                "Status": "Draft"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(11)"
+                },
+                "Id": 11,
+                "Title": "Design Mockups",
+                "Author": {
+                    "Title": "Kevin Hart"
+                },
+                "Modified": "2025-08-11T12:40:00Z",
+                "Created": "2025-07-24T14:25:00Z",
+                "Status": "In Progress"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(12)"
+                },
+                "Id": 12,
+                "Title": "Technical Specs",
+                "Author": {
+                    "Title": "Liam Neeson"
+                },
+                "Modified": "2025-08-12T10:30:00Z",
+                "Created": "2025-07-25T11:40:00Z",
+                "Status": "Approved"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(13)"
+                },
+                "Id": 13,
+                "Title": "Vendor Contracts",
+                "Author": {
+                    "Title": "Monica Bell"
+                },
+                "Modified": "2025-08-13T09:50:00Z",
+                "Created": "2025-07-26T08:35:00Z",
+                "Status": "Closed"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(14)"
+                },
+                "Id": 14,
+                "Title": "Legal Review",
+                "Author": {
+                    "Title": "Nathan Drake"
+                },
+                "Modified": "2025-08-14T13:05:00Z",
+                "Created": "2025-07-27T09:20:00Z",
+                "Status": "Pending Review"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(15)"
+                },
+                "Id": 15,
+                "Title": "Compliance Checklist",
+                "Author": {
+                    "Title": "Olivia Wilde"
+                },
+                "Modified": "2025-08-15T16:30:00Z",
+                "Created": "2025-07-28T12:45:00Z",
+                "Status": "Approved"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(16)"
+                },
+                "Id": 16,
+                "Title": "Team Assignments",
+                "Author": {
+                    "Title": "Peter Parker"
+                },
+                "Modified": "2025-08-16T11:20:00Z",
+                "Created": "2025-07-29T10:00:00Z",
+                "Status": "Draft"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(17)"
+                },
+                "Id": 17,
+                "Title": "Training Schedule",
+                "Author": {
+                    "Title": "Quincy Adams"
+                },
+                "Modified": "2025-08-17T08:40:00Z",
+                "Created": "2025-07-30T09:50:00Z",
+                "Status": "In Progress"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(18)"
+                },
+                "Id": 18,
+                "Title": "Inventory Log",
+                "Author": {
+                    "Title": "Rachel Green"
+                },
+                "Modified": "2025-08-18T14:15:00Z",
+                "Created": "2025-07-31T12:10:00Z",
+                "Status": "Approved"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(19)"
+                },
+                "Id": 19,
+                "Title": "QA Test Plan",
+                "Author": {
+                    "Title": "Sam Wilson"
+                },
+                "Modified": "2025-08-19T09:05:00Z",
+                "Created": "2025-08-01T11:15:00Z",
+                "Status": "Pending Review"
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(20)"
+                },
+                "Id": 20,
+                "Title": "Deployment Checklist",
+                "Author": {
+                    "Title": "Tina Turner"
+                },
+                "Modified": "2025-08-20T18:30:00Z",
+                "Created": "2025-08-02T13:20:00Z",
+                "Status": "Closed"
+            }
+        ]
+    }
+}
