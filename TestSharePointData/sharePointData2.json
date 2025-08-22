@@ -1,0 +1,97 @@
+{
+    "d": {
+        "results": [
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(1)"
+                },
+                "Id": 1,
+                "Title": "Project Proposal",
+                "Author": {
+                    "Id": 5,
+                    "Title": "Alice Johnson",
+                    "EMail": "alice@contoso.com"
+                },
+                "Modified": "2025-08-01T09:12:00Z",
+                "Created": "2025-07-10T08:20:00Z",
+                "Status": "In Progress",
+                "Category": {
+                    "Id": 12,
+                    "Value": "Strategic"
+                },
+                "Tags": [
+                    "Finance",
+                    "Q3",
+                    "Confidential"
+                ],
+                "DocumentLink": {
+                    "Url": "https://contoso.sharepoint.com/docs/proposal.docx",
+                    "Description": "Proposal File"
+                },
+                "Approved": false,
+                "CostEstimate": 25000.75,
+                "HasAttachments": true
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(2)"
+                },
+                "Id": 2,
+                "Title": "Budget Report",
+                "Author": {
+                    "Id": 6,
+                    "Title": "Bob Smith",
+                    "EMail": "bob@contoso.com"
+                },
+                "Modified": "2025-08-02T14:45:00Z",
+                "Created": "2025-07-12T11:05:00Z",
+                "Status": "Approved",
+                "Category": {
+                    "Id": 14,
+                    "Value": "Financial"
+                },
+                "Tags": [
+                    "Annual",
+                    "Board Review"
+                ],
+                "DocumentLink": {
+                    "Url": "https://contoso.sharepoint.com/docs/budget.xlsx",
+                    "Description": "Budget File"
+                },
+                "Approved": true,
+                "CostEstimate": 100000.0,
+                "HasAttachments": false
+            },
+            {
+                "__metadata": {
+                    "id": "Web/Lists(guid'123')/Items(3)"
+                },
+                "Id": 3,
+                "Title": "Meeting Notes",
+                "Author": {
+                    "Id": 7,
+                    "Title": "Charlie Brown",
+                    "EMail": "charlie@contoso.com"
+                },
+                "Modified": "2025-08-03T10:22:00Z",
+                "Created": "2025-07-14T09:15:00Z",
+                "Status": "Draft",
+                "Category": {
+                    "Id": 20,
+                    "Value": "Operations"
+                },
+                "Tags": [
+                    "Weekly",
+                    "Staff Meeting"
+                ],
+                "DocumentLink": {
+                    "Url": "https://contoso.sharepoint.com/docs/meetingnotes.docx",
+                    "Description": "Notes File"
+                },
+                "Approved": false,
+                "CostEstimate": 0,
+                "HasAttachments": true
+            }
+        ]
+    }
+}

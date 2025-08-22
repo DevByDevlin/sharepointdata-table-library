@@ -1,3 +1,62 @@
+/**
+ * SharePointTable.js
+ * -------------------
+ * Utility class for rendering SharePoint REST API JSON data as an HTML table.
+ *
+ * HOW TO USE:
+ * 1. Include this file in your HTML page:
+ *    <script src="SharePointTable.js"></script>
+ *
+ * 2. Prepare your SharePoint data.
+ *    The class automatically normalizes common SharePoint REST responses:
+ *      - data.d.results (classic SharePoint REST format)
+ *      - data.results
+ *      - data.d (if it's already an array)
+ *      - plain arrays of objects
+ *
+ * 3. Create a new instance of SharePointTable:
+ *    const table = new SharePointTable({
+ *      data: responseFromSharePoint,   // Your JSON data
+ *      containerId: "tableContainer",  // The ID of a <div> where table will render
+ *      includeHeaders: null,           // Optional: array of headers to display in order
+ *      tableHeaderColors: "#f4f4f4",   // Optional: header background color
+ *      cellSize: "150px",              // Optional: minimum cell width
+ *      outline: true,                  // Optional: show borders (true/false)
+ *      backgroundColor: "#fff",        // Optional: table background
+ *      textColor: "#000",              // Optional: text color
+ *      borderColor: "#ccc",            // Optional: border color
+ *      customClass: "my-custom-table"  // Optional: add your own CSS class
+ *    });
+ *
+ * 4. Render the table:
+ *    table.render();
+ *
+ * FORMATTING:
+ * - Objects are flattened into "key: value" strings.
+ * - Arrays are joined into comma-separated strings.
+ * - Null values display as empty cells.
+ *
+ * EXAMPLE:
+ *    <div id="tableContainer"></div>
+ *
+ *    <script>
+ *      fetch("/_api/web/lists/getbytitle('Documents')/items")
+ *        .then(res => res.json())
+ *        .then(data => {
+ *          const table = new SharePointTable({
+ *            data: data,
+ *            containerId: "tableContainer",
+ *            includeHeaders: ["Id", "Title", "Author", "Status"]
+ *          });
+ *          table.render();
+ *        });
+ *    </script>
+ *
+ * NOTES:
+ * - Supports dynamic SharePoint responses with nested objects, lookups, and arrays.
+ * - For best results, use includeHeaders to limit which fields are shown.
+ */
+
 class SharePointTable {
   constructor({
     data = [],
@@ -10,6 +69,8 @@ class SharePointTable {
     textColor = "#000",
     borderColor = "#ccc",
     customClass = "",
+    formatDates = null,
+    sortBy = null,
   }) {
     this.data = data;
     this.includeHeaders = includeHeaders;
@@ -21,6 +82,8 @@ class SharePointTable {
     this.textColor = textColor;
     this.borderColor = borderColor;
     this.customClass = customClass;
+    this.formatDates = formatDates;
+    this.sortBy = sortBy;
   }
 
   _normalizeData = () => {
@@ -52,10 +115,10 @@ class SharePointTable {
     let headerArray = Array.from(headers);
 
     if (this.includeHeaders && Array.isArray(this.includeHeaders)) {
-      // Only keep the ones explicitly included
-      headerArray = headerArray.filter((h) => this.includeHeaders.includes(h));
+      // Keep only headers that exist in the data, and respect the order in includeHeaders
+      headerArray = this.includeHeaders.filter((h) => headerArray.includes(h));
     } else {
-      //Default: remove meta fields starting with "_"
+      // Default: remove meta fields starting with "_"
       headerArray = headerArray.filter((h) => !h.startsWith("_"));
     }
 
@@ -64,6 +127,20 @@ class SharePointTable {
 
   _formatCellValue = (value) => {
     if (value === null) return "";
+
+    // Format ISO dates if formatDates is set
+    if (this.formatDates && typeof value === "string") {
+      const isoDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
+      if (isoDateRegex.test(value)) {
+        const date = new Date(value);
+        const [showDate, showTime] = this.formatDates;
+
+        if (showDate && showTime) return date.toLocaleString(); // date + time
+        if (showDate && !showTime) return date.toLocaleDateString(); // date only
+        if (!showDate && showTime) return date.toLocaleTimeString(); // time only
+        return ""; // neither
+      }
+    }
 
     //handle arrays
     if (Array.isArray(value)) {
@@ -91,6 +168,29 @@ class SharePointTable {
     const rows = this._normalizeData();
     if (rows.length === 0) {
       container.innerHTML = "<p> No Data Available </p>";
+    }
+
+    // Apply sorting if sortBy is set
+    if (this.sortBy && this.sortBy.field) {
+      const { field, order } = this.sortBy;
+      rows.sort((a, b) => {
+        const valA = a[field];
+        const valB = b[field];
+
+        // Convert dates for comparison if formatDates is set
+        let aComp = valA;
+        let bComp = valB;
+        const isoDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
+
+        if (typeof valA === "string" && isoDateRegex.test(valA))
+          aComp = new Date(valA);
+        if (typeof valB === "string" && isoDateRegex.test(valB))
+          bComp = new Date(valB);
+
+        if (aComp < bComp) return order === "desc" ? 1 : -1;
+        if (aComp > bComp) return order === "desc" ? -1 : 1;
+        return 0;
+      });
     }
 
     // Clear existing content
@@ -156,4 +256,17 @@ class SharePointTable {
 }
 
 // Make it available globally
-window.SharePointTable = SharePointTable;
+(function (root, factory) {
+  if (typeof define === "function" && define.amd) {
+    // AMD (RequireJS)
+    define([], factory);
+  } else if (typeof module === "object" && module.exports) {
+    // CommonJS (Node, bundlers)
+    module.exports = factory();
+  } else {
+    // Browser global
+    root.SharePointTable = factory();
+  }
+})(typeof self !== "undefined" ? self : this, function () {
+  return SharePointTable;
+});
