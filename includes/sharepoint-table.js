@@ -3,40 +3,53 @@
  * -------------------
  * Utility class for rendering SharePoint REST API JSON data as an HTML table.
  *
+ * FEATURES:
+ * - Automatically normalizes SharePoint REST responses:
+ *      - data.d.results
+ *      - data.results
+ *      - data.d (if an array)
+ *      - plain arrays of objects
+ * - Displays table headers in the order defined by `includeHeaders` (if provided)
+ * - Formats nested objects and arrays into readable strings
+ * - Handles null values as empty cells
+ * - Optional date formatting (local date/time or date-only)
+ * - Optional sorting by any field (ascending or descending)
+ * - Fully customizable table styling (colors, borders, cell size, CSS class)
+ *
  * HOW TO USE:
+ *
  * 1. Include this file in your HTML page:
  *    <script src="SharePointTable.js"></script>
  *
  * 2. Prepare your SharePoint data.
- *    The class automatically normalizes common SharePoint REST responses:
- *      - data.d.results (classic SharePoint REST format)
- *      - data.results
- *      - data.d (if it's already an array)
- *      - plain arrays of objects
+ *    Example: fetch items from a SharePoint list.
  *
  * 3. Create a new instance of SharePointTable:
+ *
  *    const table = new SharePointTable({
  *      data: responseFromSharePoint,   // Your JSON data
- *      containerId: "tableContainer",  // The ID of a <div> where table will render
- *      includeHeaders: null,           // Optional: array of headers to display in order
- *      tableHeaderColors: "#f4f4f4",   // Optional: header background color
- *      cellSize: "150px",              // Optional: minimum cell width
- *      outline: true,                  // Optional: show borders (true/false)
- *      backgroundColor: "#fff",        // Optional: table background
- *      textColor: "#000",              // Optional: text color
- *      borderColor: "#ccc",            // Optional: border color
- *      customClass: "my-custom-table"  // Optional: add your own CSS class
+ *      containerId: "tableContainer",  // ID of the <div> to render the table in
+ *      includeHeaders: ["Id", "Title", "Author", "Modified"], // optional, header order
+ *      tableHeaderColors: "#f4f4f4",   // optional, header background color
+ *      tableHeaderTextColor: "#000",   // optional, header text color
+ *      cellSize: "150px",              // optional, minimum cell width
+ *      outline: true,                  // optional, show borders (true/false)
+ *      backgroundColor: "#fff",        // optional, table background
+ *      textColor: "#000",              // optional, text color
+ *      borderColor: "#ccc",            // optional, border color
+ *      customClass: "my-custom-table", // optional, add a custom CSS class
+ *      formatDates: [true, true],      // optional, formatDates = null | [date, time]
+ *                                      // [true, true] = show date + time
+ *                                      // [true, false] = show date only
+ *                                      // null = leave dates as-is
+ *      sortBy: { field: "Title", order: "asc" } // optional, sort table by field ascending or descending
  *    });
  *
  * 4. Render the table:
  *    table.render();
  *
- * FORMATTING:
- * - Objects are flattened into "key: value" strings.
- * - Arrays are joined into comma-separated strings.
- * - Null values display as empty cells.
+ * EXAMPLE HTML:
  *
- * EXAMPLE:
  *    <div id="tableContainer"></div>
  *
  *    <script>
@@ -46,15 +59,19 @@
  *          const table = new SharePointTable({
  *            data: data,
  *            containerId: "tableContainer",
- *            includeHeaders: ["Id", "Title", "Author", "Status"]
+ *            includeHeaders: ["Id", "Title", "Author", "Modified"],
+ *            formatDates: [true, true],
+ *            sortBy: { field: "Modified", order: "desc" }
  *          });
  *          table.render();
  *        });
  *    </script>
  *
  * NOTES:
- * - Supports dynamic SharePoint responses with nested objects, lookups, and arrays.
- * - For best results, use includeHeaders to limit which fields are shown.
+ * - For best performance and readability, use `includeHeaders` to limit displayed fields.
+ * - Supports nested objects, arrays, and SharePoint lookup fields.
+ * - Sorting works on text, numbers, booleans, and ISO date strings.
+ * - Styling options are fully customizable via constructor parameters.
  */
 
 class SharePointTable {
