@@ -1,2 +1,77 @@
 # sharepointdata-table-library
+
 This library takes data from a sharepoint list and renders a styled table for developers using js in the sharepoint environment
+
+- SharePointTable.js
+- ***
+- Utility class for rendering SharePoint REST API JSON data as an HTML table.
+-
+- FEATURES:
+- - Automatically normalizes SharePoint REST responses:
+-      - data.d.results
+-      - data.results
+-      - data.d (if an array)
+-      - plain arrays of objects
+- - Displays table headers in the order defined by `includeHeaders` (if provided)
+- - Formats nested objects and arrays into readable strings
+- - Handles null values as empty cells
+- - Optional date formatting (local date/time or date-only)
+- - Optional sorting by any field (ascending or descending)
+- - Fully customizable table styling (colors, borders, cell size, CSS class)
+-
+- HOW TO USE:
+-
+- 1.  Include this file in your HTML page:
+- <script src="SharePointTable.js"></script>
+-
+- 2.  Prepare your SharePoint data.
+- Example: fetch items from a SharePoint list.
+-
+- 3.  Create a new instance of SharePointTable:
+-
+- const table = new SharePointTable({
+-      data: responseFromSharePoint,   // Your JSON data
+-      containerId: "tableContainer",  // ID of the <div> to render the table in
+-      includeHeaders: ["Id", "Title", "Author", "Modified"], // optional, header order
+-      tableHeaderColors: "#f4f4f4",   // optional, header background color
+-      tableHeaderTextColor: "#000",   // optional, header text color
+-      cellSize: "150px",              // optional, minimum cell width
+-      outline: true,                  // optional, show borders (true/false)
+-      backgroundColor: "#fff",        // optional, table background
+-      textColor: "#000",              // optional, text color
+-      borderColor: "#ccc",            // optional, border color
+-      customClass: "my-custom-table", // optional, add a custom CSS class
+-      formatDates: [true, true],      // optional, formatDates = null | [date, time]
+-                                      // [true, true] = show date + time
+-                                      // [true, false] = show date only
+-                                      // null = leave dates as-is
+-      sortBy: { field: "Title", order: "asc" } // optional, sort table by field ascending or descending
+- });
+-
+- 4.  Render the table:
+- table.render();
+-
+- EXAMPLE HTML:
+-
+- <div id="tableContainer"></div>
+-
+- <script>
+-      fetch("/_api/web/lists/getbytitle('Documents')/items")
+-        .then(res => res.json())
+-        .then(data => {
+-          const table = new SharePointTable({
+-            data: data,
+-            containerId: "tableContainer",
+-            includeHeaders: ["Id", "Title", "Author", "Modified"],
+-            formatDates: [true, true],
+-            sortBy: { field: "Modified", order: "desc" }
+-          });
+-          table.render();
+-        });
+- </script>
+-
+- NOTES:
+- - For best performance and readability, use `includeHeaders` to limit displayed fields.
+- - Supports nested objects, arrays, and SharePoint lookup fields.
+- - Sorting works on text, numbers, booleans, and ISO date strings.
+- - Styling options are fully customizable via constructor parameters.
