@@ -12,6 +12,7 @@ const getTableData = () => {
         containerId: "sharepointTable",
         includeHeaders: ["Author", "Title", "Tags", "Status", "Modified"],
         tableHeaderColors: "#0078D4",
+        tableHeaderTextColor: "#fff",
         cellSize: "120px",
         outline: true,
         backgroundColor: "#f9f9f9",

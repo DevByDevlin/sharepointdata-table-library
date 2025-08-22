@@ -63,6 +63,7 @@ class SharePointTable {
     includeHeaders = null,
     containerId,
     tableHeaderColors = "#f4f4f4",
+    tableHeaderTextColor = "#000",
     cellSize = "auto",
     outline = true,
     backgroundColor = "#fff",
@@ -76,6 +77,7 @@ class SharePointTable {
     this.includeHeaders = includeHeaders;
     this.containerId = containerId;
     this.tableHeaderColors = tableHeaderColors;
+    this.tableHeaderTextColor = tableHeaderTextColor;
     this.cellSize = cellSize;
     this.outline = outline;
     this.backgroundColor = backgroundColor;
@@ -215,6 +217,7 @@ class SharePointTable {
         const th = document.createElement("th");
         th.innerText = header;
         th.style.backgroundColor = this.tableHeaderColors;
+        th.style.color = this.tableHeaderTextColor;
         th.style.padding = "8px";
         th.style.textAlign = "left";
         th.style.border = this.outline
