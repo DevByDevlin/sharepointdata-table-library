@@ -1,9 +1,3 @@
-# sharepointdata-table-library
-
-Absolutely! Here’s a **clean, professional, and README-friendly version** of your instructions that highlights features, usage, and examples clearly:
-
----
-
 # SharePointTable.js
 
 A lightweight JavaScript utility for rendering SharePoint REST API JSON data as a fully customizable HTML table.
